@@ -10,7 +10,7 @@
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       <home-manager/nixos>
     ];
 
@@ -104,18 +104,26 @@
 
   # TODO vim config, turn into seperate .nix file
   home-manager.users.mizu = { config, pkgs, ... }: {
-    # home.packages = [ pkgs.dnsutils ];
     home.stateVersion = "23.11";
 
+    home.file."./.config/nvim/" = {
+	source = ./nvim;
+     	recursive = true;
+    };
+
     programs = {
+    	neovim = import ./neovim.nix {
+		inherit config pkgs;
+	};
+
     	zsh = {
     	enable = true;
 	enableCompletion = true;
     	enableAutosuggestions = true;
 	syntaxHighlighting.enable = true;
 	shellAliases = {
-		ll = "ls -l";
-		update = "sudo nixos-rebuild switch";
+	ll = "ls -l";
+	update = "sudo nixos-rebuild switch";
 		clean = "nix store gc";
 	};
 	history.size = 10000;
@@ -178,6 +186,15 @@
   fonts = {
     packages = with pkgs; [
       monaspace
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      mplus-outline-fonts.githubRelease
+      dina-font
+      proggyfonts
     ];
 
     fontconfig = {
