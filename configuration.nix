@@ -141,6 +141,7 @@
 
     # C-Programming
     gcc
+    gdb
     clang
 
     # RUST
@@ -155,7 +156,11 @@
     bitwarden
     thunderbird
     protonvpn-gui
+    protonmail-bridge
     discord
+    spotify
+    vlc
+    dropbox
 
     # IDEs/Tools
     neovim
@@ -165,6 +170,10 @@
     # formatter/lsp packages
     nil
     stylua
+    rust-analyzer
+
+    # gaming
+    steam
 
   ];
 

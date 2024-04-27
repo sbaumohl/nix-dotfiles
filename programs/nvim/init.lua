@@ -42,7 +42,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
 	},
 
 	{ "neovim/nvim-lspconfig" },
@@ -69,6 +69,8 @@ require("lazy").setup({
 			-- configurations go here
 		},
 	},
+	{ "simrat39/rust-tools.nvim" },
+	{},
 }, {
 	dev = {
 		path = "~/.local/share/nvim/nix",

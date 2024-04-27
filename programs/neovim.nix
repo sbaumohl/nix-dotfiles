@@ -42,6 +42,7 @@
 		vim-nix
 		fidget-nvim
 		formatter-nvim
+		pkgs.rust-analyzer
 	];
 
 
