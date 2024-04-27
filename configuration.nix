@@ -17,7 +17,7 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
   # boot.loader.grub.version = 2;
@@ -106,42 +106,20 @@
   home-manager.users.mizu = { config, pkgs, ... }: {
     home.stateVersion = "23.11";
 
-    home.file."./.config/nvim/" = {
-	source = ./nvim;
-     	recursive = true;
-    };
-
     programs = {
-    	neovim = import ./neovim.nix {
+    	neovim = import ./programs/neovim.nix {
 		inherit config pkgs;
 	};
 
-    	zsh = {
-    	enable = true;
-	enableCompletion = true;
-    	enableAutosuggestions = true;
-	syntaxHighlighting.enable = true;
-	shellAliases = {
-	ll = "ls -l";
-	update = "sudo nixos-rebuild switch";
-		clean = "nix store gc";
-	};
-	history.size = 10000;
-	history.path = "${config.xdg.dataHome}/zsh/history";
-
-	oh-my-zsh = {
-		enable = true;
-		plugins = [ "git" "rust" "sudo" "copypath" "copybuffer" "jsontools" ];
-		theme = "robbyrussell";
-	};
-
+	zsh = import ./programs/zsh.nix {
+		inherit config pkgs;
 	};
     };
- 
+
   };
 
   programs.zsh.enable = true;
- 
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -159,7 +137,8 @@
     tmux
     git
     gh
-    
+    htop
+
     # C-Programming
     gcc
     clang
@@ -181,6 +160,12 @@
     # IDEs/Tools
     neovim
     vscode
+    alacritty
+
+    # formatter/lsp packages
+    nil
+    stylua
+
   ];
 
   fonts = {
@@ -195,6 +180,7 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ];
 
     fontconfig = {
