@@ -15,22 +15,8 @@ require("lspconfig").clangd.setup({
 	},
 	capabilities = capabilities,
 })
-require("lspconfig").rust_analyzer.setup({
-	capabilities = capabilities,
-	settings = {
-		["rust-analyzer"] = {
-			check = {
-				command = "clippy",
-			},
-			diagnostics = {
-				enable = true,
-			},
-		},
-	},
-})
 require("lspconfig").cmake.setup({ capabilities = capabilities })
 require("lspconfig").dockerls.setup({ capabilities = capabilities })
--- require'lspconfig'.rnix.setup{capabilities=capabilities}
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 	settings = {
@@ -57,3 +43,32 @@ vim.diagnostic.config({
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 500
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+
+-- rust mappings
+vim.g.rustaceanvim = {
+	-- Plugin configuration
+	tools = {},
+	-- LSP configuration
+	server = {
+		on_attach = function(client, bufnr)
+			-- you can also put keymaps in here
+			vim.keymap.set("n", "<leader>gk", vim.cmd.RustLsp({ "moveItem", "up" }))
+
+			vim.keymap.set("n", "<leader>gt", function()
+				print("HELLO!")
+			end)
+		end,
+		default_settings = {
+			-- rust-analyzer language server configuration
+			["rust-analyzer"] = {},
+		},
+	},
+	-- DAP configuration
+	dap = {},
+}
+
+-- vim.keymap.set("n", "<leader>x", function()
+--	vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
+--	print("RUST!")
+-- or vim.lsp.buf.codeAction() if you don't want grouping.
+-- end, { silent = true, buffer = bufnr })

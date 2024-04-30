@@ -189,7 +189,8 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      # monaspace not in 23.11
+      (nerdfonts.override { fonts = [ "IntelOneMono" "FiraCode" "DroidSansMono" ]; })
     ];
 
     fontconfig = {

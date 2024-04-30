@@ -35,6 +35,7 @@ cmp.setup({
     { name = 'nvim_lua' }, 
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'vnsip' }
   },
 
   window = {

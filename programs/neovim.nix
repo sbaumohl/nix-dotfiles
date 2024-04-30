@@ -15,11 +15,22 @@
 	'';
 
 	plugins = with pkgs.vimPlugins; [
-	        nvim-cmp
+	        # completiton
+		nvim-cmp
 		cmp-nvim-lsp
+		cmp-nvim-lua
+		cmp-nvim-lsp-signature-help
+		cmp-vsnip
+		cmp-path
+		cmp-buffer
+		vim-vsnip
 		cmp-buffer
 		cmp-cmdline
+
+		# lsp
 		nvim-lspconfig
+
+
 		nvim-treesitter.withAllGrammars
 		nvim-lint
 		clangd_extensions-nvim
@@ -42,7 +53,7 @@
 		vim-nix
 		fidget-nvim
 		formatter-nvim
-		pkgs.rust-analyzer
+		rustaceanvim
 	];
 
 
