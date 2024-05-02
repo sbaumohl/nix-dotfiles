@@ -1,3 +1,12 @@
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+-- here you can setup the language servers
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("lspconfig").clangd.setup({
@@ -22,13 +31,28 @@ require("lspconfig").pyright.setup({
 	settings = {
 		python = {
 			analysis = {
-				typeCheckingMode = "off",
+				typeCheckingMode = "on",
 			},
 		},
 	},
 })
 
 require("lspconfig").nil_ls.setup({})
+
+require("lspconfig").rust_analyzer.setup({
+	capabilities = capabilities,
+	settings = {
+		["rust-analyzer"] = {
+			check = {
+				command = "clippy",
+			},
+			diagnostics = {
+				enable = true,
+			},
+		},
+	},
+})
+
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -43,32 +67,3 @@ vim.diagnostic.config({
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 500
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-
--- rust mappings
-vim.g.rustaceanvim = {
-	-- Plugin configuration
-	tools = {},
-	-- LSP configuration
-	server = {
-		on_attach = function(client, bufnr)
-			-- you can also put keymaps in here
-			vim.keymap.set("n", "<leader>gk", vim.cmd.RustLsp({ "moveItem", "up" }))
-
-			vim.keymap.set("n", "<leader>gt", function()
-				print("HELLO!")
-			end)
-		end,
-		default_settings = {
-			-- rust-analyzer language server configuration
-			["rust-analyzer"] = {},
-		},
-	},
-	-- DAP configuration
-	dap = {},
-}
-
--- vim.keymap.set("n", "<leader>x", function()
---	vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
---	print("RUST!")
--- or vim.lsp.buf.codeAction() if you don't want grouping.
--- end, { silent = true, buffer = bufnr })

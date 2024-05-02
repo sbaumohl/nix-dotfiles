@@ -5,7 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  users.defaultUserShell = pkgs.zsh;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports =
@@ -14,16 +13,9 @@
       <home-manager/nixos>
     ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use the GRUB 2 boot loader.
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.device = "nodev";
+  boot = import ./system/boot.nix {
+      inherit config pkgs;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -93,6 +85,8 @@
     #media-session.enable = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mizu = {
     isNormalUser = true;
@@ -103,6 +97,7 @@
   # Home Manager
 
   # TODO vim config, turn into seperate .nix file
+  # TODO look at https://github.com/nix-community/nixvim more
   home-manager.users.mizu = { config, pkgs, ... }: {
     home.stateVersion = "23.11";
 
@@ -138,6 +133,7 @@
     git
     gh
     htop
+    gnumake42
 
     # C-Programming
     gcc
@@ -147,6 +143,17 @@
     # RUST
     rustc
     rustup
+    rust-analyzer
+
+    # Python
+    python311Full
+    pyright
+
+    # node
+    nodejs_20
+
+    # latex
+    texliveMedium
 
     # OS Prober
     os-prober
@@ -167,10 +174,9 @@
     vscode
     alacritty
 
-    # formatter/lsp packages
-    nil
-    stylua
-    rust-analyzer
+    # misc formatter/lsp packages
+    nil # .nix files
+    stylua # lua
 
     # gaming
     steam

@@ -57,8 +57,11 @@ require("lazy").setup({
 	{ "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/vim-vsnip" },
 
-
+	-- lsp-zero
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "neovim/nvim-lspconfig" },
 	{ "L3MON4D3/LuaSnip" },
+
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "onsails/lspkind-nvim" },
 	{ "mfussenegger/nvim-lint" },
@@ -75,13 +78,7 @@ require("lazy").setup({
 		opts = {
 			-- configurations go here
 		},
-	},
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4",
-		ft = { "rust" },
-		lazy = false,
-	},
+	}
 }, {
 	dev = {
 		path = "~/.local/share/nvim/nix",
@@ -91,6 +88,6 @@ require("lazy").setup({
 
 -- tokyonight colorscheme
 vim.cmd([[colorscheme tokyonight-night]])
-vim.g.mapleader = ';'
+vim.g.mapleader = ";"
 
 print("hello, world!")

@@ -13,7 +13,6 @@
 		${builtins.readFile nvim/cmp.lua}
 		${builtins.readFile nvim/formatter.lua}
 	'';
-
 	plugins = with pkgs.vimPlugins; [
 	        # completiton
 		nvim-cmp
@@ -29,7 +28,6 @@
 
 		# lsp
 		nvim-lspconfig
-
 
 		nvim-treesitter.withAllGrammars
 		nvim-lint
@@ -53,7 +51,6 @@
 		vim-nix
 		fidget-nvim
 		formatter-nvim
-		rustaceanvim
 	];
 
 
