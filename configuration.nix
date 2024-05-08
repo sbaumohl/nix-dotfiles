@@ -102,6 +102,8 @@
     home.stateVersion = "23.11";
 
     programs = {
+	
+	
     	neovim = import ./programs/neovim.nix {
 		inherit config pkgs;
 	};

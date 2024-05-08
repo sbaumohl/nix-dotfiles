@@ -61,6 +61,9 @@ require("lazy").setup({
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "L3MON4D3/LuaSnip" },
+	
+	-- harpoon
+ 	{ 'ThePrimeagen/harpoon' },
 
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "onsails/lspkind-nvim" },
@@ -91,3 +94,4 @@ vim.cmd([[colorscheme tokyonight-night]])
 vim.g.mapleader = ";"
 
 print("hello, world!")
+

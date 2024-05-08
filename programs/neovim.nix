@@ -12,6 +12,7 @@
 		${builtins.readFile nvim/lspconfig.lua}
 		${builtins.readFile nvim/cmp.lua}
 		${builtins.readFile nvim/formatter.lua}
+		${builtins.readFile nvim/harpoon.lua}
 	'';
 	plugins = with pkgs.vimPlugins; [
 	        # completiton
@@ -51,6 +52,9 @@
 		vim-nix
 		fidget-nvim
 		formatter-nvim
+
+		# harpoon! -- good for switching between buffers and running commands
+		harpoon
 	];
 
 
