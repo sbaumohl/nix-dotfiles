@@ -30,6 +30,9 @@
 		# lsp
 		nvim-lspconfig
 
+		# commenting plugin
+		vim-commentary
+
 		nvim-treesitter.withAllGrammars
 		nvim-lint
 		clangd_extensions-nvim
@@ -39,14 +42,12 @@
 		nvim-lint
 		vim-surround
 		vim-obsession
-		kommentary
 		lazygit-nvim
 		gitsigns-nvim
 		rainbow
 		vim-sleuth
 		lualine-nvim
 		nvim-web-devicons
-		lightspeed-nvim
 		leap-nvim
 		vim-repeat
 		vim-nix

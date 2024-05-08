@@ -1,6 +1,9 @@
 -- Utilities for creating configurations
 local util = require("formatter.util")
 
+-- make a formatting keymap
+vim.keymap.set("n", "<leader>f", ":Format<CR>") 
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
 	-- Enable or disable logging

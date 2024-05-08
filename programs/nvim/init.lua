@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- require("sbaumohl")
 require("lazy").setup({
+	-- tokyonight themes
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -61,9 +62,15 @@ require("lazy").setup({
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "L3MON4D3/LuaSnip" },
-	
+
 	-- harpoon
- 	{ 'ThePrimeagen/harpoon' },
+	{ "ThePrimeagen/harpoon" },
+
+	-- mass commenting
+	{
+		"numToStr/Comment.nvim",
+		lazy = false,
+	},
 
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "onsails/lspkind-nvim" },
@@ -81,7 +88,7 @@ require("lazy").setup({
 		opts = {
 			-- configurations go here
 		},
-	}
+	},
 }, {
 	dev = {
 		path = "~/.local/share/nvim/nix",
@@ -91,7 +98,12 @@ require("lazy").setup({
 
 -- tokyonight colorscheme
 vim.cmd([[colorscheme tokyonight-night]])
-vim.g.mapleader = ";"
 
-print("hello, world!")
+-- set map leader
+vim.g.mapleader = " "
 
+-- relative line numbers
+vim.wo.relativenumber = true
+
+-- comment default mappings
+require('Comment').setup()

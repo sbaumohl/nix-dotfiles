@@ -101,8 +101,9 @@
   home-manager.users.mizu = { config, pkgs, ... }: {
     home.stateVersion = "23.11";
 
+    # home.file.".background-image".source = ./wallpaper.jpg;
+
     programs = {
-	
 	
     	neovim = import ./programs/neovim.nix {
 		inherit config pkgs;
@@ -136,6 +137,7 @@
     gh
     htop
     gnumake42
+    neofetch
 
     # C-Programming
     gcc
