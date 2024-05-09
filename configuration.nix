@@ -17,7 +17,7 @@
       inherit config pkgs;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "sbaumohl-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -29,6 +29,9 @@
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
+
+  # fixes Windows dual boot time sync issue!
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -62,8 +65,6 @@
     videoDrivers = [ "nvidia" ];
   };
 
-  # graphics - wayland
-  # programs.sway.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -95,15 +96,16 @@
   };
 
   # Home Manager
-
-  # TODO vim config, turn into seperate .nix file
-  # TODO look at https://github.com/nix-community/nixvim more
   home-manager.users.mizu = { config, pkgs, ... }: {
     home.stateVersion = "23.11";
 
     # home.file.".background-image".source = ./wallpaper.jpg;
 
     programs = {
+
+    	starship = {
+		enable = true;
+	};
 	
     	neovim = import ./programs/neovim.nix {
 		inherit config pkgs;
@@ -138,6 +140,10 @@
     htop
     gnumake42
     neofetch
+
+    # Misc programming/runtimes
+    grpc
+    protobuf_21
 
     # C-Programming
     gcc
