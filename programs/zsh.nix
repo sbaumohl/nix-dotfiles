@@ -17,8 +17,8 @@
 
 	oh-my-zsh = {
 		enable = true;
-		# plugins = [ "starship"];
-		plugins = [ "git" "rust" "sudo" "copypath" "copybuffer" "jsontools" ];
+		plugins = [ "starship"];
+		# plugins = [ "git" "rust" "sudo" "copypath" "copybuffer" "jsontools" ];
 		theme = "robbyrussell";
 	};
 

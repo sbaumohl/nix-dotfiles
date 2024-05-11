@@ -102,13 +102,12 @@
     # home.file.".background-image".source = ./wallpaper.jpg;
 
     programs = {
-
-    	starship = {
-		enable = true;
-	};
-	
-    	neovim = import ./programs/neovim.nix {
+	starship = import ./programs/starship.nix {
 		inherit config pkgs;
+	};
+
+     	neovim = import ./programs/neovim.nix {
+	 	inherit config pkgs;
 	};
 
 	zsh = import ./programs/zsh.nix {
