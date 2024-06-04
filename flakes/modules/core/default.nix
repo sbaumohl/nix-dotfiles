@@ -2,7 +2,6 @@
 {
 	imports = [
 		./programs		
-
 	];
 
 
@@ -16,6 +15,9 @@
 		tree # visualize dir structures
 		unzip # zip file util
 		dnsutils # networking utils
+		gnumake42 # make tools
+		cmake # more make tools
+		htop # task manager
 	];
 
 }

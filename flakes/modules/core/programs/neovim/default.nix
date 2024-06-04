@@ -2,15 +2,17 @@
 {
 	home-manager.users.${username} = { pkgs, ... }:
 	{
+		
+		home.file."./.config/nvim/" = {
+			source = ./nvim;
+			recursive = true;
+		};
+
 		programs.neovim = {
 			enable = true;
 			viAlias = true;
 			vimAlias = true;
 
-			extraConfig = ''
-				lua << EOF
-				${builtins.readFile ./init.lua}
-			'';
 			plugins = with pkgs.vimPlugins; [
 				# completiton
 				nvim-cmp

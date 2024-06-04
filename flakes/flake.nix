@@ -12,6 +12,7 @@
   let 
   	pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	username = "nixos";
+	version = "24.05";
   in {
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
@@ -22,14 +23,16 @@
 		  		home-manager.nixosModules.home-manager
 		  		./modules
 		  		{
-		    			system.stateVersion = "24.05";
+		    			system.stateVersion = version;
 		    			wsl.enable = true;
+					wsl.defaultUser = "nixos";
 					
 					home-manager.users.${username} = {
-						home.stateVersion = "24.05";
+						home.stateVersion = version;
 					};
-			
-		    			# programs.neovim.enable = true;
+
+					# Set your time zone.
+  					time.timeZone = "America/Chicago";
 		  		}
 			];
 	      };
