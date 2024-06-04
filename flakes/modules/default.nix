@@ -1,0 +1,10 @@
+{ ... }:
+{
+	imports = [
+		./core
+	];
+
+	home-manager = {
+		    
+	};
+}
