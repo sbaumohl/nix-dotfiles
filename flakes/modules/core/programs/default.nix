@@ -3,6 +3,6 @@
 	imports = [
 		./neovim
 		./starship
-		# ./zsh
+		./zsh
 	];
 }
