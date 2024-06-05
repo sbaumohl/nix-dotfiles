@@ -20,4 +20,15 @@
 		htop # task manager
 	];
 
+	programs.zsh.enable = true;
+	programs.neovim = {
+    		enable = true;
+    		defaultEditor = true;
+    		viAlias = true;
+    		vimAlias = true;
+  	};
+
+	users.defaultUserShell = pkgs.zsh;
+
+
 }

@@ -4,7 +4,4 @@
 		./core
 	];
 
-	home-manager = {
-		    
-	};
 }
