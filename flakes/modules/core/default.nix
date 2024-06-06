@@ -1,11 +1,12 @@
 { pkgs, ... }:
 {
 	imports = [
-		./programs		
+		./programs
+		./fonts
 	];
 
 
-	environment.systemPackages = with pkgs; [ 
+	environment.systemPackages = with pkgs; [
 		wget
 		curl
 		tmux # terminal multiplexer
@@ -18,15 +19,25 @@
 		gnumake42 # make tools
 		cmake # more make tools
 		htop # task manager
+
+		# global runtimes and environments
+		python310
+		cargo # rust
+		rustup # also rust
+
 	];
 
-	programs.zsh.enable = true;
-	programs.neovim = {
-    		enable = true;
-    		defaultEditor = true;
-    		viAlias = true;
-    		vimAlias = true;
-  	};
+	programs = {
+		zsh.enable = true;
+
+		neovim = {
+			enable = true;
+			defaultEditor = true;
+			viAlias = true;
+			vimAlias = true;
+		};
+	};
+
 
 	users.defaultUserShell = pkgs.zsh;
 

@@ -111,6 +111,6 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 
 -- comment default mappings
-require("mason").setup()
+-- require("mason").setup()
 require("Comment").setup()
 require("ahhh")

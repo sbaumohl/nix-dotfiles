@@ -1,7 +1,6 @@
-{ pkgs, home-manager, username, ... }:
+{ pkgs, username, ... }:
 {
-	home-manager.users.${username} = { pkgs, ... }:
-	{
+	home-manager.users.${username} = {
 		
 		home.file."./.config/nvim/" = {
 			source = ./nvim;
@@ -12,6 +11,13 @@
 			enable = true;
 			viAlias = true;
 			vimAlias = true;
+
+			extraPackages = with pkgs; [
+				nil # .nix LSP
+				stylua # Lua LSP
+				rust-analyzer # Rust lsp
+				pyright # python lsp
+			];
 
 			plugins = with pkgs.vimPlugins; [
 				# completiton
@@ -26,7 +32,7 @@
 				cmp-buffer
 				cmp-cmdline
 
-				# lsp
+				# lsp manager
 				nvim-lspconfig
 
 				# commenting plugin
@@ -53,7 +59,7 @@
 				fidget-nvim
 				formatter-nvim
 
-				# harpoon! -- good for switching between buffers and running commands
+				#  good for switching between buffers and running commands
 				harpoon
 			];
 		};
