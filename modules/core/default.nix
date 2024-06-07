@@ -19,6 +19,8 @@
 		gnumake42 # make tools
 		cmake # more make tools
 		htop # task manager
+		fd # find 
+		imagemagick # image manioulation commands
 
 		# global runtimes and environments
 		python310

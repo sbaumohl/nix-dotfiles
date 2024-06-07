@@ -14,11 +14,12 @@
   	pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	username = "nixos";
 	version = "24.05";
+	locale = "en_US.UTF-8";
   in {
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
-			specialArgs = { inherit username; };
+			specialArgs = { inherit username locale; };
 			modules = [
 		  		nixos-wsl.nixosModules.default
 		  		home-manager.nixosModules.home-manager
@@ -29,10 +30,11 @@
 					nix.settings.experimental-features = [ "nix-command" "flakes" ];
 		    			system.stateVersion = version;
 					
- 					hardware.nvidia.nvidiaSettings = true;
-					# services.xserver.videoDrivers = ["nvidia"];
-					# nixpkgs.config.allowUnfree = true;
-					# nixpkgs.config.cudaSupport = true;
+ 					# hardware.nvidia.nvidiaSettings = true;
+					# hardware.nvidia.enable = true;
+					services.xserver.videoDrivers = ["nvidia"];
+					nixpkgs.config.allowUnfree = true;
+					nixpkgs.config.cudaSupport = true;
 					# https://nixos.wiki/wiki/CUDA
 
 					# WSL things
@@ -44,6 +46,19 @@
 					};
 
 					services.vscode-server.enable = true;
+
+					programs.nix-ld = {
+    						enable = true;
+    						package = pkgs.nix-ld-rs;
+					};
+  					programs.nix-ld.libraries = with pkgs; [
+						# nvidia-smi
+						stdenv.cc.cc.lib
+  					];
+
+					environment.systemPackages = with pkgs; [
+						stdenv.cc.cc.lib
+					];
 		  		}
 			];
 	      };

@@ -11,6 +11,7 @@
 				ll = "ls -l";
 				update = "sudo nixos-rebuild switch";
 				clean = "nix store gc";
+				e = "nvim";
 			};
 			history.size = 10000;
 			# history.path = "${config.xdg.dataHome}/zsh/history";
