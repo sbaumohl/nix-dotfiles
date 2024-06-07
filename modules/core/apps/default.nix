@@ -17,7 +17,6 @@
 
 		# steam
 
-
 		# desktop/boot utilities
 		os-prober
 		gparted

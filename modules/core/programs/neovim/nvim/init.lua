@@ -94,6 +94,14 @@ require("lazy").setup({
 			-- configurations go here
 		},
 	},
+	{
+  		"lervag/vimtex",  -- latex plugin
+  		lazy = false,     -- we don't want to lazy load VimTeX
+  		init = function()
+    			-- VimTeX configuration goes here, e.g.
+    			vim.g.vimtex_view_method = "zathura"
+  		end
+	}
 }, {
 	dev = {
 		path = "~/.local/share/nvim/nix",

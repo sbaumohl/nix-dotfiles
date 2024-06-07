@@ -26,6 +26,7 @@
 		python310
 		cargo # rust
 		rustup # also rust
+		texliveMedium # latex tools
 
 	];
 

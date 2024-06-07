@@ -30,7 +30,6 @@
 					nix.settings.experimental-features = [ "nix-command" "flakes" ];
 		    			system.stateVersion = version;
 					
- 					# hardware.nvidia.nvidiaSettings = true;
 					# hardware.nvidia.enable = true;
 					services.xserver.videoDrivers = ["nvidia"];
 					nixpkgs.config.allowUnfree = true;

@@ -17,6 +17,8 @@
 				stylua # Lua LSP
 				rust-analyzer # Rust lsp
 				pyright # python lsp
+				marksman # markdown LSP
+				zathura # PDF viewer
 			];
 
 			plugins = with pkgs.vimPlugins; [
